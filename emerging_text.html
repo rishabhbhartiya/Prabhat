@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Text Effect</title>
+    <style>
+        body {
+            margin: 0;
+            background: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .animated-text {
+            position: relative;
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            overflow: hidden;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .animated-text::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 0;
+            background: white;
+            animation: underline 5s linear forwards;
+            animation-delay: 2s;
+        }
+
+        @keyframes underline {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        .letter {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(100%);
+            animation: text-appear 5s ease forwards;
+        }
+
+        .letter:nth-child(1) { animation-delay: 0.5s; }
+        .letter:nth-child(2) { animation-delay: 1s; }
+        .letter:nth-child(3) { animation-delay: 1.5s; }
+        .letter:nth-child(4) { animation-delay: 2s; }
+        .letter:nth-child(5) { animation-delay: 2.5s; }
+        .letter:nth-child(6) { animation-delay: 3s; }
+
+        @keyframes text-appear {
+            0% {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-text">
+        <span class="letter">M</span>
+        <span class="letter">A</span>
+        <span class="letter">R</span>
+        <span class="letter">I</span>
+        <span class="letter">N</span>
+        <span class="letter">A</span>
+    </div>
+</body>
+</html>
